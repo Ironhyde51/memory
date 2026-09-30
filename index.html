@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Memory</title>
+    <link rel="stylesheet" href="./css/main.css">
+</head>
+
+<body>
+    <main class="home" id="home-page">
+        <img class="home__decoration" src="./assets/icons/stadia_controller.png" alt="" aria-hidden="true">
+
+        <section class="home__content">
+            <p class="home__intro">It's play time.</p>
+            <h1 class="home__title">Ready to play?</h1>
+
+            <button class="play-button" id="play-button" type="button">
+                <span class="play-button__icon-box" aria-hidden="true">
+                    <img class="play-button__icon play-button__icon--horizontal"
+                        src="./assets/icons/stadia_controller horizontal.png" alt="">
+                    <img class="play-button__icon play-button__icon--rotated" src="./assets/icons/stadia_controller.png"
+                        alt="">
+                </span>
+                <span class="play-button__label">Play</span>
+                <span class="play-button__arrow" aria-hidden="true">→</span>
+            </button>
+        </section>
+    </main>
+
+    <main class="settings" id="settings-page" hidden>
+        <section class="settings__content">
+            <h1 class="settings__title">Settings</h1>
+
+            <form class="settings__form" id="game-settings-form">
+                <fieldset class="settings__group">
+                    <legend class="settings__legend">
+                        <img class="settings__legend-icon" src="./assets/icons/palette.png" alt="" width="20"
+                            height="20">
+                        <span>Game themes</span>
+                    </legend>
+
+                    <label class="settings__option">
+                        <input class="settings__radio" id="coding-theme" type="radio" name="game-theme" value="coding">
+                        <span>Code vibes theme</span>
+                    </label>
+
+                    <label class="settings__option">
+                        <input class="settings__radio" id="gaming-theme" type="radio" name="game-theme" value="gaming">
+                        <span>Gaming theme</span>
+                    </label>
+
+                    <label class="settings__option">
+                        <input class="settings__radio" id="fantasy-theme" type="radio" name="game-theme"
+                            value="fantasy">
+                        <span>Fantasy theme</span>
+                    </label>
+                </fieldset>
+
+                <fieldset class="settings__group">
+                    <legend class="settings__legend">
+                        <img class="settings__legend-icon" src="./assets/icons/legend-icon.png" alt="" width="20"
+                            height="20">
+                        <span>Choose player</span>
+                    </legend>
+
+                    <label class="settings__option">
+                        <input class="settings__radio" id="blue-player" type="radio" name="starting-player"
+                            value="blue">
+                        <span>Blue</span>
+                    </label>
+
+                    <label class="settings__option">
+                        <input class="settings__radio" id="orange-player" type="radio" name="starting-player"
+                            value="orange">
+                        <span>Orange</span>
+                    </label>
+                </fieldset>
+
+                <fieldset class="settings__group">
+                    <legend class="settings__legend">
+                        <img class="settings__legend-icon" src="./assets/icons/boardsize-icon.png" alt="" width="20"
+                            height="20">
+                        <span>Board size</span>
+                    </legend>
+
+                    <label class="settings__option">
+                        <input class="settings__radio" id="board-size-16" type="radio" name="board-size" value="16">
+                        <span>16 cards</span>
+                    </label>
+
+                    <label class="settings__option">
+                        <input class="settings__radio" id="board-size-24" type="radio" name="board-size" value="24">
+                        <span>24 cards</span>
+                    </label>
+
+                    <label class="settings__option">
+                        <input class="settings__radio" id="board-size-36" type="radio" name="board-size" value="36">
+                        <span>36 cards</span>
+                    </label>
+                </fieldset>
+                <figure class="settings__preview">
+                    <img class="settings__preview-image" id="theme-preview" src="./assets/img/Theme CodingStyle.png"
+                        alt="Preview of the coding theme">
+                </figure>
+                <div class="settings__footer">
+                    <span class="settings__step" id="selected-theme">
+                        Theme
+                    </span>
+                    <span class="settings__separator" aria-hidden="true">/</span>
+
+                    <span class="settings__step" id="selected-player">
+                        Player
+                    </span>
+                    <span class="settings__separator" aria-hidden="true">/</span>
+
+                    <span class="settings__step settings__step--board-size" id="selected-board-size">
+                        Board size
+                    </span>
+
+                    <button class="settings__start-button" id="start-game-button" type="button" disabled>
+                        <img class="settings__start-icon" src="./assets/icons/smart_display.png" alt="" width="18"
+                            height="18">
+                        <span>Start</span>
+                    </button>
+                </div>
+            </form>
+        </section>
+    </main>
+    <main class="game" id="game-page" hidden>
+        <section class="game__content" aria-label="Memory game">
+            <header class="game__header">
+                <div class="game__score" aria-label="Current score">
+                    <span class="game__score-item game__score-item--blue">
+                        <span class="game__score-marker" aria-hidden="true"></span>
+                        Blue <span id="blue-score">0</span>
+                    </span>
+
+                    <span class="game__score-item game__score-item--orange">
+                        <span class="game__score-marker" aria-hidden="true"></span>
+                        Orange <span id="orange-score">0</span>
+                    </span>
+                </div>
+
+                <p class="game__current-player">
+                    Current player:
+                    <span class="game__current-player-marker" id="current-player-marker" aria-label="Blue"></span>
+                </p>
+
+                <button class="game__exit-button" id="exit-game-button" type="button">
+                    <img class="game__exit-icon" src="./assets/icons/move_item.png" alt="" width="18" height="18">
+                    <span>Exit game</span>
+                </button>
+            </header>
+
+            <div class="game__board" id="game-board" aria-label="Memory cards"></div>
+        </section>
+    </main>
+    <script type="module" src="/src/main.ts"></script>
+</body>
+
+</html>

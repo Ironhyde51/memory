@@ -1,0 +1,19 @@
+@use 'sass:map';
+@use '../abstract/variables' as var;
+
+body {
+    margin: map.get(var.$sizes, zero);
+    padding: map.get(var.$sizes, zero);
+    min-height: 100vh;
+    font-family: 'Roboto', Arial, sans-serif;
+    color: var.$color-text;
+    background-color: var.$color-page-bg;
+}
+
+button {
+    font: inherit;
+}
+
+[hidden] {
+    display: none !important;
+}

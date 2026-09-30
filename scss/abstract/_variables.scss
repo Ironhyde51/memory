@@ -1,0 +1,28 @@
+$color-page-bg: rgb(45, 48, 46);
+$color-text: rgb(247, 247, 247);
+$color-primary: rgb(244, 235, 96);
+$color-surface: rgb(59, 73, 69);
+$color-settings-surface: rgb(240, 240, 240);
+$color-player-blue: rgb(46, 174, 239);
+$color-player-orange: rgb(255, 145, 48);
+$color-game-accent: rgb(78, 205, 184);
+
+$sizes: (
+    zero: 0px,
+    xs: 8px,
+    sm: 16px,
+    md: 24px,
+    lg: 32px,
+    xl: 44px,
+    xxl: 68px
+);
+
+$breakpoints: (
+    zero: 0px,
+    xs: 360px,
+    sm: 480px,
+    md: 768px,
+    lg: 1024px,
+    xl: 1200px,
+    xxl: 1440px
+);

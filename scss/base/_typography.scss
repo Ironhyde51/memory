@@ -1,0 +1,7 @@
+@use '../abstract/variables' as var;
+
+@each $name, $size in var.$sizes {
+    .text-#{$name} {
+        font-size: $size;
+    }
+}

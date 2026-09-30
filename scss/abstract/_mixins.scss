@@ -1,0 +1,19 @@
+@use 'sass:map';
+@use './variables' as var;
+
+@mixin flex-center($direction: column) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: $direction;
+}
+
+@mixin respond($minsize: zero, $maxsize: xxl) {
+    @media screen and (min-width: map.get(var.$breakpoints, $minsize)) and (max-width: map.get(var.$breakpoints, $maxsize)) {
+        @content;
+    }
+}
+
+@mixin fade-in($time: 0.3s, $ease: ease-in-out) {
+    animation: fadeIn $time $ease forwards;
+}
