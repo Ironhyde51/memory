@@ -63,8 +63,12 @@
         font-size: 17px;
     }
 
-    &__current-player-marker {
+    &__current-player-marker--blue {
         color: a.$color-player-blue;
+    }
+
+    &__current-player-marker--orange {
+        color: a.$color-player-orange;
     }
 
     &__exit-button {

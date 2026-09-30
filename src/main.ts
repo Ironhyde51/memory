@@ -9,6 +9,8 @@ import { connectCardClick } from "./game/cardInteraction";
 import { codingCards } from "./data/codingCards";
 import { gamingCards } from "./data/gamingCards";
 import { fantasyCards } from "./data/fantasyCards";
+import { startPlayerState } from "./game/playerState";
+import type { Player } from "./game/playerState";
 
 const playButton = document.getElementById("play-button");
 const homePage = document.getElementById("home-page");
@@ -45,6 +47,7 @@ let isThemeSelected = false;
 let isPlayerSelected = false;
 let isBoardSizeSelected = false;
 let chosenBoardSize = 0;
+let chosenPlayer: Player | null = null;
 
 type SelectionGroup = "theme" | "player" | "board-size";
 
@@ -149,10 +152,15 @@ function createBoard(): void {
 }
 
 function showGame(): void {
-    if (settingsPage === null || gamePage === null) {
+    if (
+        settingsPage === null ||
+        gamePage === null ||
+        chosenPlayer === null
+    ) {
         return;
     }
 
+    startPlayerState(chosenPlayer);
     createBoard();
     settingsPage.hidden = true;
     gamePage.hidden = false;
@@ -297,6 +305,19 @@ function connectBoardSize(
     });
 }
 
+function connectStartingPlayer(
+    input: HTMLElement | null,
+    player: Player
+): void {
+    if (input === null) {
+        return;
+    }
+
+    input.addEventListener("change", function (): void {
+        chosenPlayer = player;
+    });
+}
+
 connectTheme(codingTheme, codingThemeImage);
 connectTheme(gamingTheme, gamingThemeImage);
 connectTheme(fantasyTheme, fantasyThemeImage);
@@ -319,6 +340,8 @@ connectSelection(fantasyTheme, selectedTheme, "Fantasy theme", "theme");
 
 connectSelection(bluePlayer, selectedPlayer, "Blue Player", "player");
 connectSelection(orangePlayer, selectedPlayer, "Orange Player", "player");
+connectStartingPlayer(bluePlayer, "blue");
+connectStartingPlayer(orangePlayer, "orange");
 
 connectSelection(boardSize16, selectedBoardSize, "Board-16 Cards", "board-size");
 connectSelection(boardSize24, selectedBoardSize, "Board-24 Cards", "board-size");

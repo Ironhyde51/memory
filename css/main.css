@@ -416,8 +416,11 @@ button {
   margin: 0;
   font-size: 17px;
 }
-.game__current-player-marker {
+.game__current-player-marker--blue {
   color: rgb(46, 174, 239);
+}
+.game__current-player-marker--orange {
+  color: rgb(255, 145, 48);
 }
 .game__exit-button {
   display: flex;
