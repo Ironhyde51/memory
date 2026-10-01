@@ -5,12 +5,16 @@ import codingCardBack from "../assets/img/coding-cards/card-reverse.png";
 import gamingCardBack from "../assets/img/gaming-cards/card-Revers.png";
 import fantasyCardBack from "../assets/img/fantasy-cards/card-Revers.png";
 import { createCardPairs } from "./game/cardPairs";
-import { connectCardClick } from "./game/cardInteraction";
+import {
+    connectCardClick,
+    resetCardInteraction
+} from "./game/cardInteraction";
 import { codingCards } from "./data/codingCards";
 import { gamingCards } from "./data/gamingCards";
 import { fantasyCards } from "./data/fantasyCards";
 import { startPlayerState } from "./game/playerState";
 import type { Player } from "./game/playerState";
+import { connectExitDialog } from "./game/exitDialog";
 
 const playButton = document.getElementById("play-button");
 const homePage = document.getElementById("home-page");
@@ -145,6 +149,7 @@ function prepareCardPairs(): void {
 }
 
 function createBoard(): void {
+    resetCardInteraction();
     clearBoard();
     setBoardSizeClass();
     prepareCardPairs();
@@ -342,6 +347,7 @@ connectSelection(bluePlayer, selectedPlayer, "Blue Player", "player");
 connectSelection(orangePlayer, selectedPlayer, "Orange Player", "player");
 connectStartingPlayer(bluePlayer, "blue");
 connectStartingPlayer(orangePlayer, "orange");
+connectExitDialog();
 
 connectSelection(boardSize16, selectedBoardSize, "Board-16 Cards", "board-size");
 connectSelection(boardSize24, selectedBoardSize, "Board-24 Cards", "board-size");

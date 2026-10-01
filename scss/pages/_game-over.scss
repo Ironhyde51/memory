@@ -1,0 +1,70 @@
+@use '../abstract/main' as a;
+
+.game-over {
+    display: grid;
+    min-height: 100vh;
+    padding: 32px;
+    place-items: center;
+    background-color: a.$color-page-bg;
+    color: a.$color-text;
+
+    &__content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    &__title {
+        margin: 0 0 68px;
+        color: a.$color-game-accent;
+        font-family: 'Roboto Slab', serif;
+        font-size: 88px;
+        font-weight: 800;
+        line-height: 1;
+        text-shadow:
+            2px 2px 0 rgb(181, 238, 228),
+            5px 5px 10px rgba(78, 205, 184, 0.35);
+    }
+
+    &__score-label {
+        margin: 0 0 18px;
+        font-size: 20px;
+    }
+
+    &__score {
+        display: flex;
+        align-items: center;
+        gap: 24px;
+        padding: 14px 18px;
+        background-color: a.$color-surface;
+        font-weight: 700;
+    }
+
+    &__score-item {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+    }
+
+    &__score-item--blue {
+        color: a.$color-player-blue;
+    }
+
+    &__score-item--orange {
+        color: a.$color-player-orange;
+    }
+
+    &__score-marker {
+        width: 16px;
+        height: 14px;
+        background-color: currentColor;
+        clip-path: polygon(
+            0 0,
+            75% 0,
+            100% 50%,
+            75% 100%,
+            0 100%
+        );
+    }
+}

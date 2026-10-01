@@ -156,7 +156,70 @@
 
             <div class="game__board" id="game-board" aria-label="Memory cards"></div>
         </section>
+        <dialog
+            class="exit-dialog"
+            id="exit-dialog"
+            aria-labelledby="exit-dialog-title"
+        >
+            <h2 class="exit-dialog__title" id="exit-dialog-title">
+                Are you sure you want to quit the game?
+            </h2>
+
+            <div class="exit-dialog__actions">
+                <button
+                    class="exit-dialog__button exit-dialog__button--back"
+                    id="back-to-game-button"
+                    type="button"
+                >
+                    Back to game
+                </button>
+
+                <button
+                    class="exit-dialog__button exit-dialog__button--confirm"
+                    id="confirm-exit-button"
+                    type="button"
+                >
+                    Exit game
+                </button>
+            </div>
+        </dialog>
     </main>
+
+    <main class="game-over" id="game-over-page" hidden>
+        <section
+            class="game-over__content"
+            aria-labelledby="game-over-title"
+        >
+            <h1 class="game-over__title" id="game-over-title">
+                Game over
+            </h1>
+
+            <p class="game-over__score-label">Final score</p>
+
+            <div class="game-over__score" aria-label="Final score">
+                <span
+                    class="game-over__score-item game-over__score-item--blue"
+                >
+                    <span
+                        class="game-over__score-marker"
+                        aria-hidden="true"
+                    ></span>
+                    Blue <span id="final-blue-score">0</span>
+                </span>
+
+                <span
+                    class="game-over__score-item game-over__score-item--orange"
+                >
+                    <span
+                        class="game-over__score-marker"
+                        aria-hidden="true"
+                    ></span>
+                    Orange <span id="final-orange-score">0</span>
+                </span>
+            </div>
+        </section>
+    </main>
+
     <script type="module" src="/src/main.ts"></script>
 </body>
 

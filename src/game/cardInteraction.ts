@@ -2,6 +2,7 @@ import {changeCurrentPlayer, rewardCurrentPlayer} from "./playerState";
 
 let firstCard: HTMLButtonElement | null = null;
 let secondCard: HTMLButtonElement | null = null;
+let hidePairTimeout: number | null = null;
 
 function showCardFront(card: HTMLButtonElement): void {
     card.classList.add("game__card--flipped");
@@ -35,6 +36,21 @@ function cardsMatch(): boolean {
 function resetSelectedCards(): void {
     firstCard = null;
     secondCard = null;
+    hidePairTimeout = null;
+}
+
+function clearHidePairTimeout(): void {
+    if (hidePairTimeout === null) {
+        return;
+    }
+
+    window.clearTimeout(hidePairTimeout);
+    hidePairTimeout = null;
+}
+
+export function resetCardInteraction(): void {
+    clearHidePairTimeout();
+    resetSelectedCards();
 }
 
 function keepMatchingPair(): void {
@@ -69,7 +85,7 @@ function checkSelectedPair(): void {
         return;
     }
 
-    window.setTimeout(hideWrongPair, 1000);
+    hidePairTimeout = window.setTimeout(hideWrongPair, 1000);
 }
 
 function selectFirstCard(card: HTMLButtonElement): void {
