@@ -11,6 +11,11 @@ const confirmExitButton = document.getElementById(
 const gamePage = document.getElementById("game-page");
 const settingsPage = document.getElementById("settings-page");
 
+const backToStartButton = document.getElementById(
+    "back-to-start-button"
+);
+const gameOverPage = document.getElementById("game-over-page");
+
 function openExitDialog(): void {
     if (!(exitDialog instanceof HTMLDialogElement)) {
         return;
@@ -20,7 +25,10 @@ function openExitDialog(): void {
 }
 
 function closeExitDialog(): void {
-    if (!(exitDialog instanceof HTMLDialogElement)) {
+    if (
+        !(exitDialog instanceof HTMLDialogElement) ||
+        !exitDialog.open
+    ) {
         return;
     }
 
@@ -28,13 +36,28 @@ function closeExitDialog(): void {
 }
 
 function leaveGame(): void {
-    if (gamePage === null || settingsPage === null) {
+    if (
+        gamePage === null ||
+        gameOverPage === null ||
+        settingsPage === null
+    ) {
         return;
     }
 
     closeExitDialog();
     gamePage.hidden = true;
+    gameOverPage.hidden = true;
     settingsPage.hidden = false;
+
+    connectBackToStartButton();
+}
+
+function connectBackToStartButton(): void {
+    if (backToStartButton === null) {
+        return;
+    }
+
+    backToStartButton.addEventListener("click", leaveGame);
 }
 
 export function connectExitDialog(): void {

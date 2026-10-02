@@ -9,6 +9,7 @@ import {
     connectCardClick,
     resetCardInteraction
 } from "./game/cardInteraction";
+import { startGameProgress } from "./game/gameProgress";
 import { codingCards } from "./data/codingCards";
 import { gamingCards } from "./data/gamingCards";
 import { fantasyCards } from "./data/fantasyCards";
@@ -150,6 +151,7 @@ function prepareCardPairs(): void {
 
 function createBoard(): void {
     resetCardInteraction();
+    startGameProgress(chosenBoardSize);
     clearBoard();
     setBoardSizeClass();
     prepareCardPairs();

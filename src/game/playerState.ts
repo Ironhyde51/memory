@@ -76,3 +76,11 @@ export function changeCurrentPlayer(): void {
 
     updateCurrentPlayerMarker();
 }
+
+export function getBlueScore(): number {
+    return blueScore;
+}
+
+export function getOrangeScore(): number {
+    return orangeScore;
+}

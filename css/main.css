@@ -574,7 +574,7 @@ button {
   margin: 0 0 68px;
   color: rgb(78, 205, 184);
   font-family: "Roboto Slab", serif;
-  font-size: 88px;
+  font-size: 146px;
   font-weight: 800;
   line-height: 1;
   text-shadow: 2px 2px 0 rgb(181, 238, 228), 5px 5px 10px rgba(78, 205, 184, 0.35);
@@ -607,6 +607,10 @@ button {
   height: 14px;
   background-color: currentColor;
   clip-path: polygon(0 0, 75% 0, 100% 50%, 75% 100%, 0 100%);
+}
+.game-over__back-button {
+  align-self: center;
+  margin-top: 36px;
 }
 
 /*# sourceMappingURL=main.css.map */

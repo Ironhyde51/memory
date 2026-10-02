@@ -19,7 +19,7 @@
         margin: 0 0 68px;
         color: a.$color-game-accent;
         font-family: 'Roboto Slab', serif;
-        font-size: 88px;
+        font-size: 146px;
         font-weight: 800;
         line-height: 1;
         text-shadow:
@@ -66,5 +66,10 @@
             75% 100%,
             0 100%
         );
+    }
+
+    &__back-button {
+        align-self: center;
+        margin-top: 36px;
     }
 }

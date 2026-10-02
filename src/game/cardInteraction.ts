@@ -1,4 +1,5 @@
-import {changeCurrentPlayer, rewardCurrentPlayer} from "./playerState";
+import { changeCurrentPlayer, rewardCurrentPlayer } from "./playerState";
+import { recordFoundPair } from "./gameProgress";
 
 let firstCard: HTMLButtonElement | null = null;
 let secondCard: HTMLButtonElement | null = null;
@@ -63,6 +64,7 @@ function keepMatchingPair(): void {
     }
 
     rewardCurrentPlayer();
+    recordFoundPair();
     resetSelectedCards();
 }
 
