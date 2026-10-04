@@ -5,6 +5,7 @@ const orangeScoreOutput = document.getElementById("orange-score");
 const currentPlayerMarker = document.getElementById("current-player-marker");
 
 let currentPlayer: Player = "blue";
+let selectedPlayer: Player = "blue";
 let blueScore = 0;
 let orangeScore = 0;
 
@@ -51,6 +52,7 @@ function updateGameHeader(): void {
 }
 
 export function startPlayerState(startingPlayer: Player): void {
+    selectedPlayer = startingPlayer;
     currentPlayer = startingPlayer;
     blueScore = 0;
     orangeScore = 0;
@@ -83,4 +85,8 @@ export function getBlueScore(): number {
 
 export function getOrangeScore(): number {
     return orangeScore;
+}
+
+export function getSelectedPlayer(): Player {
+    return selectedPlayer;
 }

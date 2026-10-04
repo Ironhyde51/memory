@@ -613,4 +613,72 @@ button {
   margin-top: 36px;
 }
 
+.result {
+  position: relative;
+  display: grid;
+  min-height: 100vh;
+  padding: 32px;
+  place-items: center;
+  overflow: hidden;
+  background-color: rgb(45, 48, 46);
+  color: rgb(247, 247, 247);
+}
+.result__confetti {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  pointer-events: none;
+}
+.result__confetti-image {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.result__content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 80px;
+  text-align: center;
+}
+.result__message {
+  margin: 0 0 14px;
+  font-size: 26px;
+}
+.result__title {
+  margin: 0;
+  font-family: "Roboto Slab", serif;
+  font-size: 38px;
+  font-weight: 800;
+}
+.result__title--blue {
+  color: rgb(46, 174, 239);
+}
+.result__title--orange {
+  color: rgb(255, 145, 48);
+}
+.result__title--draw {
+  color: rgb(78, 205, 184);
+  font-size: 72px;
+  text-shadow: 2px 2px 0 rgb(181, 238, 228), 5px 5px 10px rgba(78, 205, 184, 0.35);
+}
+.result__icon {
+  width: 180px;
+  height: 180px;
+  margin-top: 48px;
+  object-fit: contain;
+}
+.result__icon--draw {
+  width: 220px;
+  height: 220px;
+  margin-top: 30px;
+}
+.result__back-button {
+  align-self: center;
+  margin-top: 44px;
+}
+
 /*# sourceMappingURL=main.css.map */
