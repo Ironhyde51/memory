@@ -1,0 +1,144 @@
+@media screen and (min-width: 769px) and (max-width: 1023px) {
+
+    .settings__form {
+        grid-template-columns: 220px minmax(0, 1fr);
+        column-gap: 48px;
+    }
+
+    .settings__preview {
+        width: min(100%, 302px);
+    }
+
+    .settings__footer {
+        width: 100%;
+        min-width: 0;
+        padding: 8px;
+        font-size: 12px;
+    }
+
+    .settings__separator {
+        margin: 0 6px;
+        font-size: 30px;
+    }
+
+    .settings__step--board-size {
+        margin-right: 8px;
+    }
+
+    .settings__start-button {
+        padding: 8px 10px;
+    }
+}
+
+@media screen and (max-width: 770px) and (max-height: 961px) {
+
+    .settings {
+        height: 100vh;
+        min-height: 0;
+        padding: clamp(12px, 2.5vh, 22px) 12px;
+    }
+
+    .settings__content {
+        display: grid;
+        height: 100%;
+        grid-template-rows: auto minmax(0, 1fr);
+    }
+
+    .settings__title {
+        margin-bottom: clamp(20px, 3.5vh, 30px);
+        font-size: clamp(24px, 4vh, 30px);
+    }
+
+    .settings__form {
+        min-height: 0;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        grid-template-rows: auto auto clamp(150px, 30vh, 210px);
+        align-content: start;
+        gap: 8px;
+    }
+
+    .settings__group {
+        gap: 4px;
+    }
+
+    .settings__group:first-of-type {
+        grid-column: 1;
+        grid-row: 1 / span 2;
+    }
+
+    .settings__group:nth-of-type(2) {
+        grid-column: 2;
+        grid-row: 1;
+    }
+
+    .settings__group:nth-of-type(3) {
+        grid-column: 2;
+        grid-row: 2;
+    }
+
+    .settings__legend {
+        gap: 5px;
+        margin-bottom: 4px;
+        font-size: 13px;
+    }
+
+    .settings__legend-icon {
+        width: 16px;
+        height: 16px;
+    }
+
+    .settings__option {
+        gap: 5px;
+        padding-left: 0;
+        font-size: 12px;
+    }
+
+    .settings__radio {
+        width: 14px;
+        height: 14px;
+    }
+
+    .settings__option>span::before {
+        width: 12px;
+        margin-left: 4px;
+    }
+
+    .settings__option>span::after {
+        width: 6px;
+        height: 6px;
+        margin-left: -3px;
+    }
+
+    .settings__preview {
+        grid-column: 1;
+        grid-row: 3;
+        align-self: center;
+        width: min(100%, 210px);
+        margin: 0;
+    }
+
+    .settings__footer {
+        grid-column: 2;
+        grid-row: 3;
+        display: grid;
+        align-self: stretch;
+        align-content: space-between;
+        grid-template-columns: 1fr;
+        width: 100%;
+        min-height: 0;
+        padding: 6px;
+        gap: 2px;
+        font-size: 11px;
+    }
+
+    .settings__separator {
+        display: none;
+    }
+
+    .settings__start-button {
+        grid-column: 1;
+        min-height: 32px;
+        margin: 4px 0 0;
+        padding: 6px;
+    }
+}

@@ -1,0 +1,394 @@
+@use '../abstract/main' as a;
+
+@include a.respond(zero, md) {
+
+    .settings {
+        padding: 48px 24px;
+    }
+
+    .game {
+        padding: 24px 16px;
+    }
+
+    .game__content {
+        min-height: calc(100vh - 48px);
+    }
+
+    .game__header {
+        grid-template-columns: 1fr auto;
+        gap: 20px 12px;
+    }
+
+    .game__current-player {
+        grid-column: 1 / -1;
+        grid-row: 2;
+    }
+
+    .game__exit-button {
+        grid-column: 2;
+        grid-row: 1;
+    }
+
+    .game__board {
+        width: 100%;
+        margin: 28px auto 0;
+    }
+
+    .game__board--16 {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        width: min(100%, 376px);
+        gap: 8px;
+    }
+
+    .game__board--24,
+    .game__board--36 {
+        grid-template-columns: repeat(6, minmax(0, 1fr));
+        width: min(100%, 541px);
+        gap: 5px;
+    }
+
+    .game-over,
+    .result {
+        padding: 24px 16px;
+    }
+
+    .game-over__title {
+        margin-bottom: 48px;
+        font-size: clamp(64px, 16vw, 110px);
+    }
+
+    .result__content {
+        width: 100%;
+        padding-top: 40px;
+    }
+
+    .result__message {
+        font-size: clamp(20px, 5vw, 26px);
+    }
+
+    .result__title {
+        font-size: clamp(32px, 8vw, 48px);
+    }
+
+    .result__title--draw {
+        font-size: clamp(52px, 14vw, 72px);
+    }
+
+    .exit-dialog {
+        width: calc(100% - 32px);
+        padding: 36px 28px;
+    }
+
+    .exit-dialog__title {
+        font-size: clamp(24px, 5vw, 30px);
+    }
+
+    .exit-dialog__actions {
+        margin-top: 38px;
+    }
+}
+
+@include a.respond(zero, sm) {
+
+    .home {
+        padding: 24px;
+    }
+
+    .home__content {
+        width: 100%;
+        transform: none;
+    }
+
+    .home__title {
+        margin-bottom: 44px;
+    }
+
+    .home__decoration {
+        bottom: -12px;
+        left: -120px;
+        width: 300px;
+    }
+
+    .settings {
+        padding: 40px 20px;
+    }
+
+    .settings__option {
+        padding-left: 16px;
+    }
+
+    .settings__footer {
+        gap: 6px;
+        padding: 8px;
+        font-size: 12px;
+    }
+
+    .game {
+        padding: 18px 12px;
+    }
+
+    .game__content {
+        min-height: calc(100vh - 36px);
+    }
+
+    .game__header {
+        grid-template-columns: 1fr;
+        gap: 14px;
+    }
+
+    .game__score,
+    .game__current-player,
+    .game__exit-button {
+        grid-column: 1;
+        justify-self: center;
+    }
+
+    .game__score {
+        grid-row: 1;
+    }
+
+    .game__current-player {
+        grid-row: 2;
+    }
+
+    .game__exit-button {
+        grid-row: 3;
+    }
+
+    .game__board {
+        margin-top: 24px;
+    }
+
+    .game__board--24,
+    .game__board--36 {
+        gap: 4px;
+    }
+
+    .game-over__title {
+        margin-bottom: 36px;
+        font-size: clamp(48px, 15vw, 68px);
+    }
+
+    .game-over__score {
+        gap: 14px;
+        padding: 12px 14px;
+    }
+
+    .game-over__back-button {
+        margin-top: 28px;
+    }
+
+    .result__content {
+        padding-top: 24px;
+    }
+
+    .result__icon {
+        width: 140px;
+        height: 140px;
+        margin-top: 34px;
+    }
+
+    .result__icon--draw {
+        width: 170px;
+        height: 170px;
+    }
+
+    .result__back-button {
+        margin-top: 34px;
+    }
+
+    .exit-dialog {
+        width: calc(100% - 24px);
+        padding: 28px 20px;
+    }
+
+    .exit-dialog__title {
+        font-size: 22px;
+    }
+
+    .exit-dialog__actions {
+        flex-direction: column;
+        gap: 14px;
+        margin-top: 30px;
+    }
+
+    .exit-dialog__button {
+        width: 100%;
+    }
+}
+
+@include a.respond(lg, xxl) {
+
+    .game__board--16 {
+        grid-template-columns:
+            repeat(4, clamp(70px, 10vh, 120px));
+        gap: 12px;
+    }
+
+    .game__board--24,
+    .game__board--36 {
+        grid-template-columns:
+            repeat(6, clamp(54px, 8.6vh, 104px));
+        gap: 7px;
+    }
+}
+
+@media screen and (min-width: 1440px) {
+
+    .home__decoration {
+        bottom: -70px;
+        left: -100px;
+        width: clamp(500px, 30vw, 660px);
+    }
+
+    .home__content {
+        width: 640px;
+    }
+
+    .settings {
+        padding: 96px 48px;
+    }
+
+    .settings__content {
+        width: 1000px;
+    }
+
+    .settings__title {
+        margin-bottom: 64px;
+        font-size: 42px;
+    }
+
+    .settings__form {
+        grid-template-columns: 320px 1fr;
+        column-gap: 120px;
+        row-gap: 42px;
+    }
+
+    .settings__group {
+        gap: 12px;
+    }
+
+    .settings__legend {
+        gap: 12px;
+        margin-bottom: 10px;
+        font-size: 21px;
+    }
+
+    .settings__legend-icon {
+        width: 28px;
+        height: 28px;
+    }
+
+    .settings__option {
+        gap: 11px;
+        padding-left: 36px;
+        font-size: 18px;
+    }
+
+    .settings__radio {
+        width: 20px;
+        height: 20px;
+    }
+
+    .settings__preview {
+        width: 410px;
+        border-radius: 16px;
+    }
+
+    .settings__footer {
+        min-width: 460px;
+        min-height: 66px;
+        padding: 10px 12px;
+        font-size: 16px;
+    }
+
+    .settings__start-button {
+        gap: 8px;
+        padding: 13px 18px;
+        font-size: 17px;
+    }
+
+    .settings__start-icon {
+        width: 22px;
+        height: 22px;
+    }
+
+    .game__content {
+        width: 1120px;
+        max-width: 1120px;
+    }
+
+    .game__score {
+        gap: 18px;
+        padding: 16px 18px;
+        font-size: 20px;
+    }
+
+    .game__score-marker {
+        width: 20px;
+        height: 18px;
+    }
+
+    .game__current-player {
+        gap: 10px;
+        font-size: 22px;
+    }
+
+    .game__current-player-marker {
+        width: 21px;
+        height: 19px;
+    }
+
+    .game__exit-button {
+        gap: 10px;
+        padding: 13px 22px;
+        font-size: 18px;
+    }
+
+    .game__exit-icon {
+        width: 22px;
+        height: 22px;
+    }
+
+    .game__board {
+        margin-top: 46px;
+    }
+
+    .game__board--16 {
+        grid-template-columns:
+            repeat(4, clamp(68px, 11.5vh, 136px));
+        gap: 14px;
+    }
+
+    .game__board--24,
+    .game__board--36 {
+        grid-template-columns:
+            repeat(6, clamp(52px, 9.2vh, 112px));
+        gap: 8px;
+    }
+
+    .exit-dialog {
+        max-width: 720px;
+        padding: 56px 60px;
+    }
+
+    .exit-dialog__title {
+        font-size: 36px;
+    }
+
+    .exit-dialog__actions {
+        gap: 30px;
+        margin-top: 64px;
+    }
+
+    .exit-dialog__button {
+        padding: 18px 30px;
+        font-size: 20px;
+    }
+
+    .game-over__content,
+    .result__content {
+        width: 100%;
+        max-width: 960px;
+    }
+}

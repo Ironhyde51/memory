@@ -1,0 +1,173 @@
+@use '../abstract/main' as a;
+
+.theme--fantasy {
+
+    .game-over__content {
+        justify-content: center;
+        width: min(90vw, 720px);
+        aspect-ratio: 5 / 3;
+        padding: 60px 100px;
+        background-image:
+            url('../assets/img/fantasy-cards/fantasy-ui/fantasy-game-over-frame.png');
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: 100% 100%;
+    }
+
+    .game-over__title {
+        margin: 24px 0 10px;
+        color: a.$color-fantasy-text;
+        font-size: 44px;
+        line-height: 1;
+        text-shadow:
+            0 0 8px rgba(64, 190, 255, 0.9),
+            0 3px 5px rgba(0, 0, 0, 0.9);
+    }
+
+    .game-over__score-label {
+        margin: 0 0 8px;
+        color: a.$color-fantasy-text;
+        font-size: 15px;
+        text-shadow:
+            0 2px 4px rgba(0, 0, 0, 0.9);
+    }
+
+    .game-over__score {
+        gap: 8px;
+        padding: 0;
+        background-color: transparent;
+    }
+
+    .game-over__score-item {
+        width: 58px;
+        height: 58px;
+        justify-content: center;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: contain;
+        font-size: 0;
+        filter:
+            drop-shadow(0 5px 6px rgba(0, 0, 0, 0.45));
+    }
+
+    .game-over__score-item--blue {
+        background-image:
+            url('../assets/img/fantasy-cards/fantasy-ui/fantasy-score-orb-blue.png');
+    }
+
+    .game-over__score-item--orange {
+        background-image:
+            url('../assets/img/fantasy-cards/fantasy-ui/fantasy-score-orb-orange.png');
+    }
+
+    .game-over__score-marker {
+        display: none;
+    }
+
+    #final-blue-score,
+    #final-orange-score {
+        color: #ffffff;
+        font-size: 18px;
+        text-shadow:
+            0 2px 5px rgba(0, 0, 0, 0.9);
+    }
+
+    .game-over__back-button {
+        margin-top: 6px;
+    }
+
+    .result__confetti {
+        display: none;
+    }
+
+    .result__content {
+        padding-top: 0;
+    }
+
+    .result__message {
+        margin-bottom: 14px;
+        color: a.$color-fantasy-text;
+        font-size: 32px;
+        font-weight: 600;
+        text-shadow:
+            0 2px 5px rgba(0, 0, 0, 0.9);
+    }
+
+    .result__title {
+        font-size: 58px;
+        line-height: 1.1;
+        letter-spacing: 0.04em;
+    }
+
+    .result__title--blue {
+        background-image: linear-gradient(
+            #fff4bd,
+            #4fcfff 45%,
+            #1875dc
+        );
+        background-clip: text;
+        color: transparent;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        -webkit-text-stroke: 1px a.$color-fantasy-gold;
+        filter:
+            drop-shadow(0 2px 3px rgba(14, 52, 92, 0.65))
+            drop-shadow(0 0 3px rgba(43, 174, 255, 0.35));
+    }
+
+    .result__title--orange {
+        background-image: linear-gradient(
+            #fff4bd,
+            #ff9b38 45%,
+            #c84810
+        );
+        background-clip: text;
+        color: transparent;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        -webkit-text-stroke: 1px a.$color-fantasy-gold;
+        filter:
+            drop-shadow(0 2px 3px rgba(91, 39, 10, 0.65))
+            drop-shadow(0 0 3px rgba(255, 130, 35, 0.35));
+    }
+
+    .result__title--draw {
+        background-image: linear-gradient(
+            #fff8cf,
+            #f6d36b 45%,
+            #b87816
+        );
+        background-clip: text;
+        color: transparent;
+        font-size: 70px;
+        text-shadow: none;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        -webkit-text-stroke: 1px a.$color-fantasy-gold;
+        filter:
+            drop-shadow(0 2px 3px rgba(71, 43, 8, 0.65))
+            drop-shadow(0 0 3px rgba(255, 220, 120, 0.35));
+    }
+
+    .result__icon--fantasy-winner {
+        width: 280px;
+        height: 182px;
+        margin-top: 46px;
+        filter:
+            drop-shadow(0 10px 8px rgba(0, 0, 0, 0.5));
+    }
+
+    .result__icon--fantasy-draw {
+        width: 285px;
+        height: 285px;
+        margin-top: 40px;
+        filter:
+            drop-shadow(0 10px 8px rgba(0, 0, 0, 0.5));
+    }
+
+    .result__back-button {
+        min-width: 210px;
+        min-height: 64px;
+        margin-top: 46px;
+    }
+}

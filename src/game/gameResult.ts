@@ -1,12 +1,18 @@
 import bluePlayerIcon from "../../assets/icons/blue-player.png";
 import orangePlayerIcon from "../../assets/icons/orange-player.png";
 import drawIcon from "../../assets/img/gaming-cards/Draw-Icon.png";
+import gamingDrawIcon from "../../assets/img/gaming-cards/draw-gaming-icon.png";
+import gamingWinnerIcon from "../../assets/img/gaming-cards/pockal 1.png";
+import fantasyBlueWinnerIcon from "../../assets/img/fantasy-cards/fantasy-ui/fantasy-winner-crown.png";
+import fantasyOrangeWinnerIcon from "../../assets/img/fantasy-cards/fantasy-ui/fantasy-winner-crown-orange.png";
+import fantasyDrawIcon from "../../assets/img/fantasy-cards/fantasy-ui/fantasy-draw-emblem.png";
 
 import {
     getBlueScore,
     getOrangeScore,
     getSelectedPlayer
 } from "./playerState";
+import { getSelectedGameTheme } from "./themeState";
 
 export type FinalResult = "win" | "loss" | "draw";
 
@@ -22,6 +28,9 @@ const finalOrangeScore = document.getElementById(
 
 const resultMessage = document.getElementById("result-message");
 const resultTitle = document.getElementById("result-title");
+const resultBackLabel = document.getElementById(
+    "result-back-label"
+);
 const resultIcon = document.getElementById(
     "result-icon"
 ) as HTMLImageElement | null;
@@ -90,22 +99,48 @@ function prepareWinnerMessage(): void {
     resultMessage.textContent = "The winner is";
 }
 
+function getBlueWinnerTitle(): string {
+    if (getSelectedGameTheme() === "gaming") {
+        return "Blue Player";
+    }
+
+    return "BLUE PLAYER";
+}
+
+function getOrangeWinnerTitle(): string {
+    if (getSelectedGameTheme() === "gaming") {
+        return "Orange Player";
+    }
+
+    return "ORANGE PLAYER";
+}
+
 function prepareWinnerTitle(): void {
     if (resultTitle === null) {
         return;
     }
 
     if (getSelectedPlayer() === "blue") {
-        resultTitle.textContent = "BLUE PLAYER";
+        resultTitle.textContent = getBlueWinnerTitle();
         resultTitle.className = "result__title result__title--blue";
         return;
     }
 
-    resultTitle.textContent = "ORANGE PLAYER";
+    resultTitle.textContent = getOrangeWinnerTitle();
     resultTitle.className = "result__title result__title--orange";
 }
 
-function prepareWinnerIcon(): void {
+function prepareGamingWinnerIcon(): void {
+    if (resultIcon === null) {
+        return;
+    }
+
+    resultIcon.src = gamingWinnerIcon;
+    resultIcon.className =
+        "result__icon result__icon--gaming-winner";
+}
+
+function preparePlayerWinnerIcon(): void {
     if (resultIcon === null) {
         return;
     }
@@ -118,6 +153,34 @@ function prepareWinnerIcon(): void {
 
     resultIcon.src = orangePlayerIcon;
     resultIcon.className = "result__icon";
+}
+
+function prepareFantasyWinnerIcon(): void {
+    if (resultIcon === null) {
+        return;
+    }
+
+    if (getSelectedPlayer() === "blue") {
+        resultIcon.src = fantasyBlueWinnerIcon;
+    } else {
+        resultIcon.src = fantasyOrangeWinnerIcon;
+    }
+    resultIcon.className =
+        "result__icon result__icon--fantasy-winner";
+}
+
+function prepareWinnerIcon(): void {
+    if (getSelectedGameTheme() === "gaming") {
+        prepareGamingWinnerIcon();
+        return;
+    }
+
+    if (getSelectedGameTheme() === "fantasy") {
+        prepareFantasyWinnerIcon();
+        return;
+    }
+
+    preparePlayerWinnerIcon();
 }
 
 function showConfetti(): void {
@@ -152,13 +215,47 @@ function prepareDrawTitle(): void {
     resultTitle.className = "result__title result__title--draw";
 }
 
-function prepareDrawIcon(): void {
+function prepareGamingDrawIcon(): void {
+    if (resultIcon === null) {
+        return;
+    }
+
+    resultIcon.src = gamingDrawIcon;
+    resultIcon.className =
+        "result__icon result__icon--draw result__icon--gaming-draw";
+}
+
+function prepareDefaultDrawIcon(): void {
     if (resultIcon === null) {
         return;
     }
 
     resultIcon.src = drawIcon;
     resultIcon.className = "result__icon result__icon--draw";
+}
+
+function prepareFantasyDrawIcon(): void {
+    if (resultIcon === null) {
+        return;
+    }
+
+    resultIcon.src = fantasyDrawIcon;
+    resultIcon.className =
+        "result__icon result__icon--draw result__icon--fantasy-draw";
+}
+
+function prepareDrawIcon(): void {
+    if (getSelectedGameTheme() === "gaming") {
+        prepareGamingDrawIcon();
+        return;
+    }
+
+    if (getSelectedGameTheme() === "fantasy") {
+        prepareFantasyDrawIcon();
+        return;
+    }
+
+    prepareDefaultDrawIcon();
 }
 
 function hideConfetti(): void {
@@ -192,11 +289,25 @@ function hideGamePage(): void {
     gamePage.hidden = true;
 }
 
+function updateResultBackLabel(): void {
+    if (resultBackLabel === null) {
+        return;
+    }
+
+    if (getSelectedGameTheme() === "gaming") {
+        resultBackLabel.textContent = "Home";
+        return;
+    }
+
+    resultBackLabel.textContent = "Back to start";
+}
+
 function showResultPage(): void {
     if (resultPage === null) {
         return;
     }
 
+    updateResultBackLabel();
     resultPage.hidden = false;
 }
 

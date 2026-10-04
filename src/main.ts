@@ -16,6 +16,11 @@ import { fantasyCards } from "./data/fantasyCards";
 import { startPlayerState } from "./game/playerState";
 import type { Player } from "./game/playerState";
 import { connectExitDialog } from "./game/exitDialog";
+import {
+    applyGameTheme,
+    selectGameTheme,
+    type GameTheme
+} from "./game/themeState";
 
 const playButton = document.getElementById("play-button");
 const homePage = document.getElementById("home-page");
@@ -166,8 +171,8 @@ function showGame(): void {
     ) {
         return;
     }
-
     startPlayerState(chosenPlayer);
+    applyGameTheme();
     createBoard();
     settingsPage.hidden = true;
     gamePage.hidden = false;
@@ -183,15 +188,16 @@ function updateThemePreview(imagePath: string): void {
 
 function connectTheme(
     themeInput: HTMLElement | null,
-    imagePath: string
+    imagePath: string,
+    gameTheme: GameTheme
 ): void {
     if (themeInput === null) {
         return;
     }
-
     themeInput.addEventListener("change", function (): void {
         selectedThemeImage = imagePath;
         updateThemePreview(imagePath);
+        selectGameTheme(gameTheme);
     });
 }
 
@@ -325,9 +331,9 @@ function connectStartingPlayer(
     });
 }
 
-connectTheme(codingTheme, codingThemeImage);
-connectTheme(gamingTheme, gamingThemeImage);
-connectTheme(fantasyTheme, fantasyThemeImage);
+connectTheme(codingTheme, codingThemeImage, "coding");
+connectTheme(gamingTheme, gamingThemeImage, "gaming");
+connectTheme(fantasyTheme, fantasyThemeImage, "fantasy");
 
 connectCardBack(codingTheme, codingCardBack);
 connectCardBack(gamingTheme, gamingCardBack);

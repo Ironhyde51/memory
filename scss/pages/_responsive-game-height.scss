@@ -1,0 +1,19 @@
+@media screen and (max-width: 1023.98px) {
+
+    .game__board--16 {
+        grid-template-columns: repeat(
+            4,
+            clamp(56px, min(calc(25vw - 14px), 10vh), 92px)
+        );
+        width: auto;
+    }
+
+    .game__board--24,
+    .game__board--36 {
+        grid-template-columns: repeat(
+            6,
+            clamp(38px, min(calc(16.6667vw - 7.34px), 8vh), 86px)
+        );
+        width: auto;
+    }
+}

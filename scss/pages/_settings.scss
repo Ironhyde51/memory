@@ -42,7 +42,7 @@
 
     &__form {
         display: grid;
-        grid-template-columns: 240px 1fr;
+        grid-template-columns: 240px minmax(0, 1fr);
         column-gap: 96px;
         row-gap: 32px;
     }
@@ -244,5 +244,67 @@
         width: 18px;
         height: 18px;
         object-fit: contain;
+    }
+
+}
+
+@include a.respond(zero, md) {
+
+    .settings {
+        padding: 48px 24px;
+
+        &__title {
+            margin-bottom: 40px;
+        }
+
+        &__form {
+            grid-template-columns: 1fr;
+            row-gap: 28px;
+        }
+
+        &__group,
+        &__preview,
+        &__footer {
+            grid-column: 1;
+            grid-row: auto;
+        }
+
+        &__preview {
+            justify-self: center;
+            width: min(100%, 360px);
+            margin-top: 8px;
+        }
+
+        &__footer {
+            display: grid;
+            grid-template-columns:
+                1fr auto 1fr auto 1fr;
+            justify-self: stretch;
+            width: 100%;
+            min-width: 0;
+            gap: 8px;
+            white-space: normal;
+        }
+
+        &__step {
+            align-self: center;
+            text-align: center;
+        }
+
+        &__step--board-size {
+            margin-right: 0;
+        }
+
+        &__separator {
+            margin: 0;
+            font-size: 28px;
+        }
+
+        &__start-button {
+            grid-column: 1 / -1;
+            justify-content: center;
+            width: 100%;
+            margin: 8px 0 0;
+        }
     }
 }
