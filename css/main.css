@@ -98,19 +98,14 @@ button {
   transition: transform 0.2s ease, filter 0.2s ease;
 }
 .play-button:hover {
-  transform: translateY(-2px);
+  transform: scale(1.16);
   filter: brightness(1.05);
 }
-.play-button:hover .play-button__icon--horizontal {
-  opacity: 0;
-  transform: scale(0.85);
-}
-.play-button:hover .play-button__icon--rotated {
-  opacity: 1;
-  transform: scale(1);
+.play-button:hover .play-button__icon {
+  transform: rotate(-45deg) scale(1.1);
 }
 .play-button:hover .play-button__arrow {
-  transform: translateX(4px) scale(1.12);
+  transform: translateX(5px) scale(1.52);
   font-weight: 700;
 }
 .play-button:focus-visible {
@@ -130,15 +125,8 @@ button {
   width: 26px;
   height: 24px;
   object-fit: contain;
-  transition: opacity 0.25s ease, transform 0.25s ease;
-}
-.play-button__icon--horizontal {
-  opacity: 1;
-  transform: scale(1);
-}
-.play-button__icon--rotated {
-  opacity: 0;
-  transform: scale(0.85);
+  transform: rotate(0deg);
+  transition: transform 0.25s ease;
 }
 .play-button__arrow {
   display: inline-block;
@@ -229,11 +217,11 @@ button {
 .home__decoration {
   position: absolute;
   bottom: -20px;
-  left: -60px;
-  width: 374px;
+  left: -84px;
+  width: 380px;
   height: auto;
   opacity: 0.06;
-  transform: rotate(70deg);
+  transform: rotate(54deg);
   filter: brightness(0) invert(1);
   pointer-events: none;
 }
@@ -440,7 +428,11 @@ button {
   opacity: 0.45;
 }
 .settings__start-button:not(:disabled):hover {
-  transform: translateY(-2px);
+  transform: scale(1.12);
+}
+.settings__start-button:not(:disabled):hover .settings__start-icon {
+  transform: rotate(-15deg) scale(1.1);
+  transition: transform 0.25s ease;
 }
 .settings__start-button:focus-visible {
   outline: 3px solid rgb(45, 48, 46);
@@ -451,6 +443,8 @@ button {
   width: 18px;
   height: 18px;
   object-fit: contain;
+  transform: rotate(0deg) scale(1);
+  transition: transform 0.25s ease-in-out;
 }
 
 @media screen and (min-width: 0px) and (max-width: 768px) {

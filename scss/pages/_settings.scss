@@ -231,7 +231,12 @@
         }
 
         &:not(:disabled):hover {
-            transform: translateY(-2px);
+            transform: scale(1.12);
+
+            .settings__start-icon {
+                transform: rotate(-15deg) scale(1.1);
+                transition: transform 0.25s ease;
+            }
         }
 
         &:focus-visible {
@@ -245,6 +250,8 @@
         width: 18px;
         height: 18px;
         object-fit: contain;
+        transform: rotate(0deg) scale(1);
+        transition: transform 0.25s ease-in-out;
     }
 
 }
