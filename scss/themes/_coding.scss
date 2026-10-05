@@ -1,6 +1,24 @@
 @use '../abstract/main' as a;
 
 .theme--coding {
+    .game,
+    .game-over,
+    .result,
+    .exit-dialog {
+        font-family: 'Red Rose', sans-serif;
+    }
+
+    .game-over__title,
+    .result__title,
+    .exit-dialog__title {
+        font-family: inherit;
+    }
+
+    .game-over__title,
+    .result__title {
+        font-weight: 700;
+    }
+
     .game__card--flipped .game__card-image--front {
         box-sizing: border-box;
         border: 3px solid a.$color-game-accent;

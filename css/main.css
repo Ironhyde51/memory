@@ -32,6 +32,13 @@
   font-weight: 400 900;
   font-display: swap;
 }
+@font-face {
+  font-family: "Red Rose";
+  src: url("../assets/fonts/RedRose-Variable.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 300 700;
+  font-display: swap;
+}
 body {
   margin: 0px;
   padding: 0px;
@@ -201,6 +208,7 @@ button {
   min-height: 100vh;
   overflow: hidden;
   background-color: rgb(45, 48, 46);
+  font-family: "Red Rose", sans-serif;
 }
 .home__content {
   position: relative;
@@ -214,7 +222,7 @@ button {
 }
 .home__title {
   margin: 0 0 64px;
-  font-family: "Roboto Slab", Georgia, serif;
+  font-family: inherit;
   font-size: clamp(48px, 9vw, 84px);
   line-height: 1;
 }
@@ -235,6 +243,7 @@ button {
   padding: 80px 32px;
   background-color: rgb(247, 247, 247);
   color: rgb(45, 48, 46);
+  font-family: "Red Rose", sans-serif;
 }
 .settings__content {
   width: min(100%, 720px);
@@ -1193,6 +1202,21 @@ button {
     grid-template-columns: repeat(6, clamp(38px, min(16.6667vw - 7.34px, 8vh), 86px));
     width: auto;
   }
+}
+.theme--coding .game,
+.theme--coding .game-over,
+.theme--coding .result,
+.theme--coding .exit-dialog {
+  font-family: "Red Rose", sans-serif;
+}
+.theme--coding .game-over__title,
+.theme--coding .result__title,
+.theme--coding .exit-dialog__title {
+  font-family: inherit;
+}
+.theme--coding .game-over__title,
+.theme--coding .result__title {
+  font-weight: 700;
 }
 .theme--coding .game__card--flipped .game__card-image--front {
   box-sizing: border-box;
