@@ -61,9 +61,9 @@ export function startPlayerState(startingPlayer: Player): void {
 
 export function rewardCurrentPlayer(): void {
     if (currentPlayer === "blue") {
-        blueScore += 2;
+        blueScore += 1;
     } else {
-        orangeScore += 2;
+        orangeScore += 1;
     }
 
     updateGameHeader();
