@@ -143,13 +143,13 @@
         }
 
         &__button--confirm {
-            border-width: 1px;
-            background-color: #ffffff;
+            border-width: 2px;
+            background-color:#f3dce8;
             color: a.$color-gaming-accent;
 
             &:hover {
-                background-color: a.$color-gaming-accent;
-                color: #ffffff;
+                background-color: rgba(218, 152, 181, 0.65);
+                color: a.$color-gaming-accent;
                 box-shadow:
                     0 3px 7px rgba(255, 0, 110, 0.35);
                 transform: none;
@@ -258,17 +258,19 @@
         margin-top: 34px;
     }
 
-    .result:not([hidden]) {
-        animation: gaming-result-slide-in 0.8s ease-in-out both;
-    }
-}
-
-@keyframes gaming-result-slide-in {
-    from {
-        transform: translateY(100%);
+    .theme--gaming {
+        .result:not([hidden]) {
+            animation: gaming-result-slide-in 0.8s ease-in-out both;
+        }
     }
 
-    to {
-        transform: translateY(0);
+    @keyframes gaming-result-slide-in {
+        from {
+            transform: translateY(100%);
+        }
+
+        to {
+            transform: translateY(0);
+        }
     }
 }

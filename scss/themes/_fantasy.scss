@@ -15,32 +15,21 @@
 
     .game__card {
         animation:
-            fantasyCardFloat 3s ease-in-out infinite;
+            fantasyCardFloat 650ms ease-out 1 both;
     }
 
-    .game__card:nth-child(5n + 1) {
-        animation-delay: -0.4s;
-        animation-duration: 2.8s;
+    .game__card-image--front {
+        border-radius: 8px;
+        transition:
+            border-color 0.25s ease,
+            box-shadow 0.25s ease;
     }
 
-    .game__card:nth-child(5n + 2) {
-        animation-delay: -1.2s;
-        animation-duration: 3.1s;
-    }
-
-    .game__card:nth-child(5n + 3) {
-        animation-delay: -2s;
-        animation-duration: 3.5s;
-    }
-
-    .game__card:nth-child(5n + 4) {
-        animation-delay: -1.7s;
-        animation-duration: 2.9s;
-    }
-
-    .game__card:nth-child(5n) {
-        animation-delay: -2.6s;
-        animation-duration: 3.3s;
+    .game__card--flipped .game__card-image--front {
+        border-color: a.$color-fantasy-gold;
+        box-shadow:
+            0 0 12px rgba(63, 170, 255, 0.65),
+            0 7px 14px rgba(0, 0, 0, 0.8);
     }
 
     .game,

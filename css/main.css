@@ -1346,13 +1346,13 @@ button {
   transform: none;
 }
 .theme--gaming .exit-dialog__button--confirm {
-  border-width: 1px;
-  background-color: #ffffff;
+  border-width: 2px;
+  background-color: #f3dce8;
   color: #ff006e;
 }
 .theme--gaming .exit-dialog__button--confirm:hover {
-  background-color: #ff006e;
-  color: #ffffff;
+  background-color: rgba(218, 152, 181, 0.65);
+  color: #ff006e;
   box-shadow: 0 3px 7px rgba(255, 0, 110, 0.35);
   transform: none;
 }
@@ -1432,10 +1432,9 @@ button {
 .theme--gaming .result__back-button {
   margin-top: 34px;
 }
-.theme--gaming .result:not([hidden]) {
+.theme--gaming .theme--gaming .result:not([hidden]) {
   animation: gaming-result-slide-in 0.8s ease-in-out both;
 }
-
 @keyframes gaming-result-slide-in {
   from {
     transform: translateY(100%);
@@ -1444,6 +1443,7 @@ button {
     transform: translateY(0);
   }
 }
+
 .theme--fantasy .game,
 .theme--fantasy .game-over,
 .theme--fantasy .result {
@@ -1454,27 +1454,15 @@ button {
   color: #f8e7a1;
 }
 .theme--fantasy .game__card {
-  animation: fantasyCardFloat 3s ease-in-out infinite;
+  animation: fantasyCardFloat 650ms ease-out 1 both;
 }
-.theme--fantasy .game__card:nth-child(5n+1) {
-  animation-delay: -0.4s;
-  animation-duration: 2.8s;
+.theme--fantasy .game__card-image--front {
+  border-radius: 8px;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
 }
-.theme--fantasy .game__card:nth-child(5n+2) {
-  animation-delay: -1.2s;
-  animation-duration: 3.1s;
-}
-.theme--fantasy .game__card:nth-child(5n+3) {
-  animation-delay: -2s;
-  animation-duration: 3.5s;
-}
-.theme--fantasy .game__card:nth-child(5n+4) {
-  animation-delay: -1.7s;
-  animation-duration: 2.9s;
-}
-.theme--fantasy .game__card:nth-child(5n) {
-  animation-delay: -2.6s;
-  animation-duration: 3.3s;
+.theme--fantasy .game__card--flipped .game__card-image--front {
+  border-color: #d8ae55;
+  box-shadow: 0 0 12px rgba(63, 170, 255, 0.65), 0 7px 14px rgba(0, 0, 0, 0.8);
 }
 .theme--fantasy .game,
 .theme--fantasy .game-over,
@@ -1935,7 +1923,7 @@ button {
     font-size: 10px;
   }
   .theme--fantasy .game-over__content {
-    width: calc(100vw - 16px);
+    width: 100%;
     min-height: 330px;
     aspect-ratio: auto;
     padding: 58px 46px;
