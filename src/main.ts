@@ -49,6 +49,9 @@ const selectedBoardSize = document.getElementById(
 const startGameButton = document.getElementById(
     "start-game-button"
 );
+const gameSettingsForm = document.getElementById(
+    "game-settings-form"
+);
 
 let selectedThemeImage = codingThemeImage;
 let selectedCardBack = codingCardBack;
@@ -340,6 +343,42 @@ function updateStartButton(): void {
     startGameButton.disabled = !allSelected;
 }
 
+/** Clears the completed state of every settings group. */
+function resetSelectionGroups(): void {
+    isThemeSelected = false;
+    isPlayerSelected = false;
+    isBoardSizeSelected = false;
+}
+
+/** Restores the internal defaults used before a new selection. */
+function resetSelectedValues(): void {
+    selectedThemeImage = codingThemeImage;
+    selectedCardBack = codingCardBack;
+    selectedCardFronts = codingCards;
+    preparedCardFronts = [];
+    chosenBoardSize = 0;
+    chosenPlayer = null;
+}
+
+/** Restores the placeholder text in the settings summary. */
+function resetSelectionSummary(): void {
+    updateSelection(selectedTheme, "Theme");
+    updateSelection(selectedPlayer, "Player");
+    updateSelection(selectedBoardSize, "Board size");
+}
+
+/** Clears every setting after the player leaves a game. */
+function resetSettings(): void {
+    if (gameSettingsForm instanceof HTMLFormElement) {
+        gameSettingsForm.reset();
+    }
+    resetSelectionGroups();
+    resetSelectedValues();
+    resetSelectionSummary();
+    updateThemePreview(codingThemeImage);
+    updateStartButton();
+}
+
 /**
  * Marks one settings group as selected.
  * @param group - Selection group that has been completed.
@@ -442,7 +481,7 @@ connectSelection(bluePlayer, selectedPlayer, "Blue Player", "player");
 connectSelection(orangePlayer, selectedPlayer, "Orange Player", "player");
 connectStartingPlayer(bluePlayer, "blue");
 connectStartingPlayer(orangePlayer, "orange");
-connectExitDialog();
+connectExitDialog(resetSettings);
 
 connectSelection(boardSize16, selectedBoardSize, "Board-16 Cards", "board-size");
 connectSelection(boardSize24, selectedBoardSize, "Board-24 Cards", "board-size");

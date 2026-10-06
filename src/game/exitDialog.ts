@@ -17,6 +17,10 @@ const resultBackButton = document.getElementById(
 const gameOverPage = document.getElementById("game-over-page");
 const resultPage = document.getElementById("result-page");
 
+type ResetSettings = () => void;
+
+let resetSettingsAction: ResetSettings | null = null;
+
 /** Opens the confirmation dialog for leaving the current game. */
 function openExitDialog(): void {
     if (!(exitDialog instanceof HTMLDialogElement)) {
@@ -59,6 +63,10 @@ function leaveGame(): void {
     gamePage.hidden = true;
     hideFinishedGamePages();
     settingsPage.hidden = false;
+
+    if (resetSettingsAction !== null) {
+        resetSettingsAction();
+    }
 }
 
 /** Connects the result screen button with the settings page. */
@@ -70,8 +78,13 @@ function connectResultBackButton(): void {
     resultBackButton.addEventListener("click", leaveGame);
 }
 
-/** Connects every button used to open, close, or confirm the dialog. */
-export function connectExitDialog(): void {
+/**
+ * Connects every button used to open, close, or confirm the dialog.
+ * @param resetSettings - Clears every choice made for the previous game.
+ */
+export function connectExitDialog(resetSettings: ResetSettings): void {
+    resetSettingsAction = resetSettings;
+
     if (exitGameButton !== null) {
         exitGameButton.addEventListener("click", openExitDialog);
     }
