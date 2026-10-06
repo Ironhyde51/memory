@@ -1,3 +1,4 @@
+import "../scss/main.scss";
 import codingThemeImage from "../assets/img/Theme CodingStyle.png";
 import gamingThemeImage from "../assets/img/Theme GamingStyle.png";
 import fantasyThemeImage from "../assets/img/Theme FantasyStyle.png";

@@ -55,12 +55,12 @@
     }
 
     .game__score-item--blue .game__score-marker {
-        background-image: url('../assets/icons/blue-player.png');
+        background-image: url('../../assets/icons/blue-player.png');
     }
 
     .game__score-item--orange .game__score-marker {
         background-image:
-            url('../assets/icons/orange-player.png');
+            url('../../assets/icons/orange-player.png');
     }
 
     .game__current-player {
@@ -80,7 +80,7 @@
         position: absolute;
         inset: 4px;
         background-image:
-            url('../assets/icons/blue-player.png');
+            url('../../assets/icons/blue-player.png');
         background-repeat: no-repeat;
         background-position: center;
         background-size: contain;
@@ -196,12 +196,12 @@
 
     .game-over__score-item--blue .game-over__score-marker {
         background-image:
-            url('../assets/icons/blue-player.png');
+            url('../../assets/icons/blue-player.png');
     }
 
     .game-over__score-item--orange .game-over__score-marker {
         background-image:
-            url('../assets/icons/orange-player.png');
+            url('../../assets/icons/orange-player.png');
     }
 
     .result__title--blue {

@@ -75,18 +75,13 @@ Start the Vite development server:
 npm run dev
 ```
 
-Compile SCSS automatically in a second terminal:
-
-```bash
-npm run watch
-```
+Vite compiles the imported SCSS automatically during development.
 
 ### Production Build
 
-Compile the SCSS and create the production build:
+Create the production build, including the compiled CSS:
 
 ```bash
-npm run build:css
 npm run build
 ```
 
@@ -104,8 +99,6 @@ memory/
 │   ├── fonts/
 │   ├── icons/
 │   └── img/
-├── css/
-│   └── main.css
 ├── scss/
 │   ├── abstract/
 │   ├── base/

@@ -7,7 +7,7 @@
     .result {
         background-color: a.$color-fantasy-bg;
         background-image:
-            url('../assets/img/fantasy-cards/fantasy-ui/fantasy-page-background.jpg');
+            url('../../assets/img/fantasy-cards/fantasy-ui/fantasy-page-background.jpg');
         background-position: center;
         background-size: cover;
         color: a.$color-fantasy-text;
@@ -67,12 +67,12 @@
 
     .game__score-item--blue {
         background-image:
-            url('../assets/img/fantasy-cards/fantasy-ui/fantasy-score-orb-blue.png');
+            url('../../assets/img/fantasy-cards/fantasy-ui/fantasy-score-orb-blue.png');
     }
 
     .game__score-item--orange {
         background-image:
-            url('../assets/img/fantasy-cards/fantasy-ui/fantasy-score-orb-orange.png');
+            url('../../assets/img/fantasy-cards/fantasy-ui/fantasy-score-orb-orange.png');
     }
 
     .game__score-marker {
@@ -104,7 +104,7 @@
             width: min(90vw, 520px);
             height: 50px;
             background-image:
-                url('../assets/img/fantasy-cards/fantasy-ui/fantasy-divider.png');
+                url('../../assets/img/fantasy-cards/fantasy-ui/fantasy-divider.png');
             background-repeat: no-repeat;
             background-position: center;
             background-size: 100% 100%;
@@ -128,12 +128,12 @@
 
     .game__current-player-marker--blue {
         background-image:
-            url('../assets/img/fantasy-cards/fantasy-ui/fantasy-current-player-blue.png');
+            url('../../assets/img/fantasy-cards/fantasy-ui/fantasy-current-player-blue.png');
     }
 
     .game__current-player-marker--orange {
         background-image:
-            url('../assets/img/fantasy-cards/fantasy-ui/fantasy-current-player-orange.png');
+            url('../../assets/img/fantasy-cards/fantasy-ui/fantasy-current-player-orange.png');
     }
 
     .game__exit-button {
@@ -144,7 +144,7 @@
         border: 0;
         background-color: transparent;
         background-image:
-            url('../assets/img/fantasy-cards/fantasy-ui/fantasy-button-normal.png');
+            url('../../assets/img/fantasy-cards/fantasy-ui/fantasy-button-normal.png');
         background-repeat: no-repeat;
         background-position: center;
         background-size: 100% 100%;
@@ -163,14 +163,14 @@
             border: 0;
             background-color: transparent;
             background-image:
-                url('../assets/img/fantasy-cards/fantasy-ui/fantasy-button-hover.png');
+                url('../../assets/img/fantasy-cards/fantasy-ui/fantasy-button-hover.png');
             box-shadow: none;
             transform: translateY(-2px);
         }
 
         &:active {
             background-image:
-                url('../assets/img/fantasy-cards/fantasy-ui/fantasy-button-active.png');
+                url('../../assets/img/fantasy-cards/fantasy-ui/fantasy-button-active.png');
             transform: translateY(0);
         }
 
@@ -190,7 +190,7 @@
         border: 0;
         background-color: transparent;
         background-image:
-            url('../assets/img/fantasy-cards/fantasy-ui/fantasy-dialog-frame.png');
+            url('../../assets/img/fantasy-cards/fantasy-ui/fantasy-dialog-frame.png');
         background-repeat: no-repeat;
         background-position: center;
         background-size: 100% 100%;
@@ -225,7 +225,7 @@
         border: 0;
         background-color: transparent;
         background-image:
-            url('../assets/img/fantasy-cards/fantasy-ui/fantasy-button-normal.png');
+            url('../../assets/img/fantasy-cards/fantasy-ui/fantasy-button-normal.png');
         background-repeat: no-repeat;
         background-position: center;
         background-size: 100% 100%;
@@ -242,7 +242,7 @@
             border: 0;
             background-color: transparent;
             background-image:
-                url('../assets/img/fantasy-cards/fantasy-ui/fantasy-button-hover.png');
+                url('../../assets/img/fantasy-cards/fantasy-ui/fantasy-button-hover.png');
             color: #ffffff;
             box-shadow: none;
             transform: translateY(-2px);
@@ -250,7 +250,7 @@
 
         &:active {
             background-image:
-                url('../assets/img/fantasy-cards/fantasy-ui/fantasy-button-active.png');
+                url('../../assets/img/fantasy-cards/fantasy-ui/fantasy-button-active.png');
             transform: translateY(0);
         }
 

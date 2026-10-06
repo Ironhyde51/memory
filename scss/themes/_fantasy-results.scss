@@ -8,7 +8,7 @@
         aspect-ratio: 5 / 3;
         padding: 60px 100px;
         background-image:
-            url('../assets/img/fantasy-cards/fantasy-ui/fantasy-game-over-frame.png');
+            url('../../assets/img/fantasy-cards/fantasy-ui/fantasy-game-over-frame.png');
         background-repeat: no-repeat;
         background-position: center;
         background-size: 100% 100%;
@@ -52,12 +52,12 @@
 
     .game-over__score-item--blue {
         background-image:
-            url('../assets/img/fantasy-cards/fantasy-ui/fantasy-score-orb-blue.png');
+            url('../../assets/img/fantasy-cards/fantasy-ui/fantasy-score-orb-blue.png');
     }
 
     .game-over__score-item--orange {
         background-image:
-            url('../assets/img/fantasy-cards/fantasy-ui/fantasy-score-orb-orange.png');
+            url('../../assets/img/fantasy-cards/fantasy-ui/fantasy-score-orb-orange.png');
     }
 
     .game-over__score-marker {

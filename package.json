@@ -4,11 +4,8 @@
   "description": "SCSS starter project",
   "scripts": {
     "dev": "vite",
-    "watch": "sass --watch scss/main.scss css/main.css",
-    "build:css": "sass scss/main.scss css/main.css",
     "build": "vite build",
     "preview": "vite preview"
-    
   },
   "devDependencies": {
     "sass": "^1.102.0",
