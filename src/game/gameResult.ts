@@ -37,6 +37,10 @@ const resultIcon = document.getElementById(
 const RESULT_SCREEN_DELAY = 1800;
 let resultTransitionTimeout: number | null = null;
 
+/**
+ * Determines the final result by comparing both player scores.
+ * @returns The winning player or `draw` when both scores are equal.
+ */
 export function getFinalResult(): FinalResult {
     const blueScore = getBlueScore();
     const orangeScore = getOrangeScore();
@@ -52,6 +56,7 @@ export function getFinalResult(): FinalResult {
     return "orange";
 }
 
+/** Updates the blue score shown on the Game Over screen. */
 function updateFinalBlueScore(): void {
     if (finalBlueScore === null) {
         return;
@@ -60,6 +65,7 @@ function updateFinalBlueScore(): void {
     finalBlueScore.textContent = getBlueScore().toString();
 }
 
+/** Updates the orange score shown on the Game Over screen. */
 function updateFinalOrangeScore(): void {
     if (finalOrangeScore === null) {
         return;
@@ -68,11 +74,13 @@ function updateFinalOrangeScore(): void {
     finalOrangeScore.textContent = getOrangeScore().toString();
 }
 
+/** Updates both scores shown on the Game Over screen. */
 function updateFinalScores(): void {
     updateFinalBlueScore();
     updateFinalOrangeScore();
 }
 
+/** Displays the Game Over screen with the complete final score. */
 function showGameOverScreen(): void {
     if (gameOverPage === null) {
         return;
@@ -82,6 +90,7 @@ function showGameOverScreen(): void {
     gameOverPage.hidden = false;
 }
 
+/** Prepares the introductory message for a winner result. */
 function prepareWinnerMessage(): void {
     if (resultMessage === null) {
         return;
@@ -90,6 +99,10 @@ function prepareWinnerMessage(): void {
     resultMessage.textContent = "The winner is";
 }
 
+/**
+ * Returns the blue winner title for the selected theme.
+ * @returns The formatted blue winner title.
+ */
 function getBlueWinnerTitle(): string {
     if (getSelectedGameTheme() === "gaming") {
         return "Blue Player";
@@ -98,6 +111,10 @@ function getBlueWinnerTitle(): string {
     return "BLUE PLAYER";
 }
 
+/**
+ * Returns the orange winner title for the selected theme.
+ * @returns The formatted orange winner title.
+ */
 function getOrangeWinnerTitle(): string {
     if (getSelectedGameTheme() === "gaming") {
         return "Orange Player";
@@ -106,6 +123,10 @@ function getOrangeWinnerTitle(): string {
     return "ORANGE PLAYER";
 }
 
+/**
+ * Sets the winner title and its matching player class.
+ * @param winner - Player with the higher final score.
+ */
 function prepareWinnerTitle(winner: Winner): void {
     if (resultTitle === null) {
         return;
@@ -121,6 +142,7 @@ function prepareWinnerTitle(winner: Winner): void {
     resultTitle.className = "result__title result__title--orange";
 }
 
+/** Applies the Gaming theme trophy to the winner screen. */
 function prepareGamingWinnerIcon(): void {
     if (resultIcon === null) {
         return;
@@ -131,6 +153,10 @@ function prepareGamingWinnerIcon(): void {
         "result__icon result__icon--gaming-winner";
 }
 
+/**
+ * Applies the matching player pawn to the Coding winner screen.
+ * @param winner - Player whose pawn should be displayed.
+ */
 function preparePlayerWinnerIcon(winner: Winner): void {
     if (resultIcon === null) {
         return;
@@ -146,6 +172,10 @@ function preparePlayerWinnerIcon(winner: Winner): void {
     resultIcon.className = "result__icon";
 }
 
+/**
+ * Applies the matching crown to the Fantasy winner screen.
+ * @param winner - Player whose crown should be displayed.
+ */
 function prepareFantasyWinnerIcon(winner: Winner): void {
     if (resultIcon === null) {
         return;
@@ -160,6 +190,10 @@ function prepareFantasyWinnerIcon(winner: Winner): void {
         "result__icon result__icon--fantasy-winner";
 }
 
+/**
+ * Selects the winner icon that belongs to the active theme.
+ * @param winner - Player whose themed icon should be displayed.
+ */
 function prepareWinnerIcon(winner: Winner): void {
     if (getSelectedGameTheme() === "gaming") {
         prepareGamingWinnerIcon();
@@ -174,6 +208,7 @@ function prepareWinnerIcon(winner: Winner): void {
     preparePlayerWinnerIcon(winner);
 }
 
+/** Makes the winner confetti visible. */
 function showConfetti(): void {
     if (resultConfetti === null) {
         return;
@@ -182,6 +217,10 @@ function showConfetti(): void {
     resultConfetti.hidden = false;
 }
 
+/**
+ * Prepares all text and images for a winner result.
+ * @param winner - Player shown as the winner.
+ */
 function prepareWinnerScreen(winner: Winner): void {
     prepareWinnerMessage();
     prepareWinnerTitle(winner);
@@ -189,6 +228,7 @@ function prepareWinnerScreen(winner: Winner): void {
     showConfetti();
 }
 
+/** Prepares the introductory message for a draw result. */
 function prepareDrawMessage(): void {
     if (resultMessage === null) {
         return;
@@ -197,6 +237,7 @@ function prepareDrawMessage(): void {
     resultMessage.textContent = "It’s a";
 }
 
+/** Prepares the title used for a draw result. */
 function prepareDrawTitle(): void {
     if (resultTitle === null) {
         return;
@@ -206,6 +247,7 @@ function prepareDrawTitle(): void {
     resultTitle.className = "result__title result__title--draw";
 }
 
+/** Applies the Gaming theme image to the draw screen. */
 function prepareGamingDrawIcon(): void {
     if (resultIcon === null) {
         return;
@@ -216,6 +258,7 @@ function prepareGamingDrawIcon(): void {
         "result__icon result__icon--draw result__icon--gaming-draw";
 }
 
+/** Applies the Coding theme image to the draw screen. */
 function prepareDefaultDrawIcon(): void {
     if (resultIcon === null) {
         return;
@@ -225,6 +268,7 @@ function prepareDefaultDrawIcon(): void {
     resultIcon.className = "result__icon result__icon--draw";
 }
 
+/** Applies the Fantasy theme emblem to the draw screen. */
 function prepareFantasyDrawIcon(): void {
     if (resultIcon === null) {
         return;
@@ -235,6 +279,7 @@ function prepareFantasyDrawIcon(): void {
         "result__icon result__icon--draw result__icon--fantasy-draw";
 }
 
+/** Selects the draw icon that belongs to the active theme. */
 function prepareDrawIcon(): void {
     if (getSelectedGameTheme() === "gaming") {
         prepareGamingDrawIcon();
@@ -249,6 +294,7 @@ function prepareDrawIcon(): void {
     prepareDefaultDrawIcon();
 }
 
+/** Hides confetti because a draw has no winner. */
 function hideConfetti(): void {
     if (resultConfetti === null) {
         return;
@@ -257,6 +303,7 @@ function hideConfetti(): void {
     resultConfetti.hidden = true;
 }
 
+/** Prepares all text and images for a draw result. */
 function prepareDrawScreen(): void {
     prepareDrawMessage();
     prepareDrawTitle();
@@ -264,6 +311,10 @@ function prepareDrawScreen(): void {
     hideConfetti();
 }
 
+/**
+ * Reports whether the active game page is already hidden.
+ * @returns `true` when the game page is missing or hidden.
+ */
 function gameIsHidden(): boolean {
     if (gamePage === null) {
         return true;
@@ -272,6 +323,7 @@ function gameIsHidden(): boolean {
     return Boolean(gamePage.hidden);
 }
 
+/** Hides the active game page. */
 function hideGamePage(): void {
     if (gamePage === null) {
         return;
@@ -280,6 +332,7 @@ function hideGamePage(): void {
     gamePage.hidden = true;
 }
 
+/** Sets the result button label required by the active theme. */
 function updateResultBackLabel(): void {
     if (resultBackLabel === null) {
         return;
@@ -293,6 +346,7 @@ function updateResultBackLabel(): void {
     resultBackLabel.textContent = "Back to start";
 }
 
+/** Displays the prepared result page. */
 function showResultPage(): void {
     if (resultPage === null) {
         return;
@@ -302,16 +356,25 @@ function showResultPage(): void {
     resultPage.hidden = false;
 }
 
+/**
+ * Prepares and displays the winner screen.
+ * @param winner - Player shown as the winner.
+ */
 function showWinnerScreen(winner: Winner): void {
     prepareWinnerScreen(winner);
     showResultPage();
 }
 
+/** Prepares and displays the draw screen. */
 function showDrawScreen(): void {
     prepareDrawScreen();
     showResultPage();
 }
 
+/**
+ * Displays either the winner screen or the draw screen.
+ * @param finalResult - Winner or draw result to display.
+ */
 function showResultScreen(finalResult: FinalResult): void {
     if (finalResult === "draw") {
         showDrawScreen();
@@ -321,11 +384,13 @@ function showResultScreen(finalResult: FinalResult): void {
     showWinnerScreen(finalResult);
 }
 
+/** Finishes the delayed transition to the final result screen. */
 function finishResultTransition(): void {
     resultTransitionTimeout = null;
     showResultScreen(getFinalResult());
 }
 
+/** Starts the delay between Game Over and the result screen. */
 function startResultTransition(): void {
     resultTransitionTimeout = window.setTimeout(
         finishResultTransition,
@@ -333,6 +398,7 @@ function startResultTransition(): void {
     );
 }
 
+/** Cancels a pending transition to the result screen. */
 function clearResultTransitionTimeout(): void {
     if (resultTransitionTimeout === null) {
         return;
@@ -342,6 +408,7 @@ function clearResultTransitionTimeout(): void {
     resultTransitionTimeout = null;
 }
 
+/** Ends the game and starts the Game Over result sequence. */
 export function showFinalResult(): void {
     if (gameIsHidden()) {
         return;
@@ -352,6 +419,7 @@ export function showFinalResult(): void {
     startResultTransition();
 }
 
+/** Hides the Game Over page. */
 function hideGameOverPage(): void {
     if (gameOverPage === null) {
         return;
@@ -360,6 +428,7 @@ function hideGameOverPage(): void {
     gameOverPage.hidden = true;
 }
 
+/** Hides the winner or draw result page. */
 function hideResultPage(): void {
     if (resultPage === null) {
         return;
@@ -368,6 +437,7 @@ function hideResultPage(): void {
     resultPage.hidden = true;
 }
 
+/** Cancels result timers and hides all finished-game pages. */
 export function hideFinalScreens(): void {
     clearResultTransitionTimeout();
     hideGameOverPage();
