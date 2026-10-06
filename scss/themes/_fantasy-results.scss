@@ -166,4 +166,18 @@
         min-height: 64px;
         margin-top: 46px;
     }
+
+    .result:not([hidden]) {
+        animation: fantasy-result-slide-in 0.8s ease-in-out both;
+    }
+}
+
+@keyframes fantasy-result-slide-in {
+    from {
+        transform: translateX(100%);
+    }
+
+    to {
+        transform: translateX(0);
+    }
 }

@@ -1432,7 +1432,18 @@ button {
 .theme--gaming .result__back-button {
   margin-top: 34px;
 }
+.theme--gaming .result:not([hidden]) {
+  animation: gaming-result-slide-in 0.8s ease-in-out both;
+}
 
+@keyframes gaming-result-slide-in {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
 .theme--fantasy .game,
 .theme--fantasy .game-over,
 .theme--fantasy .result {
@@ -1765,7 +1776,18 @@ button {
   min-height: 64px;
   margin-top: 46px;
 }
+.theme--fantasy .result:not([hidden]) {
+  animation: fantasy-result-slide-in 0.8s ease-in-out both;
+}
 
+@keyframes fantasy-result-slide-in {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
 @media screen and (min-width: 0px) and (max-width: 768px) {
   .theme--gaming .game__header {
     padding: 12px;

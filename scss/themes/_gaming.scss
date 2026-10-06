@@ -258,5 +258,17 @@
         margin-top: 34px;
     }
 
+    .result:not([hidden]) {
+        animation: gaming-result-slide-in 0.8s ease-in-out both;
+    }
+}
 
+@keyframes gaming-result-slide-in {
+    from {
+        transform: translateY(100%);
+    }
+
+    to {
+        transform: translateY(0);
+    }
 }
