@@ -28,12 +28,13 @@ export function startGameProgress(cardCount: number): void {
     hideFinalScreens();
 }
 
-export function recordFoundPair(): void {
+export function recordFoundPair(): boolean {
     foundCardCount += 2;
 
     if (foundCardCount !== requiredCardCount) {
-        return;
+        return false;
     }
 
     resultTimeout = window.setTimeout(finishGame, 700);
+    return true;
 }

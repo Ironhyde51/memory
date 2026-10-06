@@ -1,5 +1,5 @@
-import bluePlayerIcon from "../../assets/icons/blue-player.png";
-import orangePlayerIcon from "../../assets/icons/orange-player.png";
+import bluePlayerIcon from "../../assets/icons/chess_pawn-blue.svg";
+import orangePlayerIcon from "../../assets/icons/chess_pawn-orange.svg";
 import drawIcon from "../../assets/img/gaming-cards/Draw-Icon.png";
 import gamingDrawIcon from "../../assets/img/gaming-cards/draw-gaming-icon.png";
 import gamingWinnerIcon from "../../assets/img/gaming-cards/pockal 1.png";
@@ -9,12 +9,12 @@ import fantasyDrawIcon from "../../assets/img/fantasy-cards/fantasy-ui/fantasy-d
 
 import {
     getBlueScore,
-    getOrangeScore,
-    getSelectedPlayer
+    getOrangeScore
 } from "./playerState";
 import { getSelectedGameTheme } from "./themeState";
 
-export type FinalResult = "win" | "loss" | "draw";
+export type Winner = "blue" | "orange";
+export type FinalResult = Winner | "draw";
 
 const gamePage = document.getElementById("game-page");
 const gameOverPage = document.getElementById("game-over-page");
@@ -34,31 +34,22 @@ const resultBackLabel = document.getElementById(
 const resultIcon = document.getElementById(
     "result-icon"
 ) as HTMLImageElement | null;
-
-function isDraw(): boolean {
-    return getBlueScore() === getOrangeScore();
-}
-
-function didSelectedPlayerWin(): boolean {
-    const selectedPlayer = getSelectedPlayer();
-
-    if (selectedPlayer === "blue") {
-        return getBlueScore() > getOrangeScore();
-    }
-
-    return getOrangeScore() > getBlueScore();
-}
+const RESULT_SCREEN_DELAY = 1800;
+let resultTransitionTimeout: number | null = null;
 
 export function getFinalResult(): FinalResult {
-    if (isDraw()) {
+    const blueScore = getBlueScore();
+    const orangeScore = getOrangeScore();
+
+    if (blueScore === orangeScore) {
         return "draw";
     }
 
-    if (didSelectedPlayerWin()) {
-        return "win";
+    if (blueScore > orangeScore) {
+        return "blue";
     }
 
-    return "loss";
+    return "orange";
 }
 
 function updateFinalBlueScore(): void {
@@ -82,7 +73,7 @@ function updateFinalScores(): void {
     updateFinalOrangeScore();
 }
 
-function showLossScreen(): void {
+function showGameOverScreen(): void {
     if (gameOverPage === null) {
         return;
     }
@@ -115,12 +106,12 @@ function getOrangeWinnerTitle(): string {
     return "ORANGE PLAYER";
 }
 
-function prepareWinnerTitle(): void {
+function prepareWinnerTitle(winner: Winner): void {
     if (resultTitle === null) {
         return;
     }
 
-    if (getSelectedPlayer() === "blue") {
+    if (winner === "blue") {
         resultTitle.textContent = getBlueWinnerTitle();
         resultTitle.className = "result__title result__title--blue";
         return;
@@ -140,12 +131,12 @@ function prepareGamingWinnerIcon(): void {
         "result__icon result__icon--gaming-winner";
 }
 
-function preparePlayerWinnerIcon(): void {
+function preparePlayerWinnerIcon(winner: Winner): void {
     if (resultIcon === null) {
         return;
     }
 
-    if (getSelectedPlayer() === "blue") {
+    if (winner === "blue") {
         resultIcon.src = bluePlayerIcon;
         resultIcon.className = "result__icon";
         return;
@@ -155,12 +146,12 @@ function preparePlayerWinnerIcon(): void {
     resultIcon.className = "result__icon";
 }
 
-function prepareFantasyWinnerIcon(): void {
+function prepareFantasyWinnerIcon(winner: Winner): void {
     if (resultIcon === null) {
         return;
     }
 
-    if (getSelectedPlayer() === "blue") {
+    if (winner === "blue") {
         resultIcon.src = fantasyBlueWinnerIcon;
     } else {
         resultIcon.src = fantasyOrangeWinnerIcon;
@@ -169,18 +160,18 @@ function prepareFantasyWinnerIcon(): void {
         "result__icon result__icon--fantasy-winner";
 }
 
-function prepareWinnerIcon(): void {
+function prepareWinnerIcon(winner: Winner): void {
     if (getSelectedGameTheme() === "gaming") {
         prepareGamingWinnerIcon();
         return;
     }
 
     if (getSelectedGameTheme() === "fantasy") {
-        prepareFantasyWinnerIcon();
+        prepareFantasyWinnerIcon(winner);
         return;
     }
 
-    preparePlayerWinnerIcon();
+    preparePlayerWinnerIcon(winner);
 }
 
 function showConfetti(): void {
@@ -191,10 +182,10 @@ function showConfetti(): void {
     resultConfetti.hidden = false;
 }
 
-function prepareWinnerScreen(): void {
+function prepareWinnerScreen(winner: Winner): void {
     prepareWinnerMessage();
-    prepareWinnerTitle();
-    prepareWinnerIcon();
+    prepareWinnerTitle(winner);
+    prepareWinnerIcon(winner);
     showConfetti();
 }
 
@@ -311,8 +302,8 @@ function showResultPage(): void {
     resultPage.hidden = false;
 }
 
-function showWinnerScreen(): void {
-    prepareWinnerScreen();
+function showWinnerScreen(winner: Winner): void {
+    prepareWinnerScreen(winner);
     showResultPage();
 }
 
@@ -321,28 +312,44 @@ function showDrawScreen(): void {
     showResultPage();
 }
 
-function showNonLossResult(finalResult: FinalResult): void {
+function showResultScreen(finalResult: FinalResult): void {
     if (finalResult === "draw") {
         showDrawScreen();
         return;
     }
 
-    showWinnerScreen();
+    showWinnerScreen(finalResult);
+}
+
+function finishResultTransition(): void {
+    resultTransitionTimeout = null;
+    showResultScreen(getFinalResult());
+}
+
+function startResultTransition(): void {
+    resultTransitionTimeout = window.setTimeout(
+        finishResultTransition,
+        RESULT_SCREEN_DELAY
+    );
+}
+
+function clearResultTransitionTimeout(): void {
+    if (resultTransitionTimeout === null) {
+        return;
+    }
+
+    window.clearTimeout(resultTransitionTimeout);
+    resultTransitionTimeout = null;
 }
 
 export function showFinalResult(): void {
     if (gameIsHidden()) {
         return;
     }
-    const finalResult = getFinalResult();
+
     hideGamePage();
-
-    if (finalResult === "loss") {
-        showLossScreen();
-        return;
-    }
-
-    showNonLossResult(finalResult);
+    showGameOverScreen();
+    startResultTransition();
 }
 
 function hideGameOverPage(): void {
@@ -362,6 +369,7 @@ function hideResultPage(): void {
 }
 
 export function hideFinalScreens(): void {
+    clearResultTransitionTimeout();
     hideGameOverPage();
     hideResultPage();
 }

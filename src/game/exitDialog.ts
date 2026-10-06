@@ -10,9 +10,6 @@ const confirmExitButton = document.getElementById(
 );
 const gamePage = document.getElementById("game-page");
 const settingsPage = document.getElementById("settings-page");
-const backToStartButton = document.getElementById(
-    "back-to-start-button"
-);
 const resultBackButton = document.getElementById(
     "result-back-button"
 );
@@ -60,14 +57,12 @@ function leaveGame(): void {
     settingsPage.hidden = false;
 }
 
-function connectBackToStartButtons(): void {
-    if (backToStartButton !== null) {
-        backToStartButton.addEventListener("click", leaveGame);
+function connectResultBackButton(): void {
+    if (resultBackButton === null) {
+        return;
     }
 
-    if (resultBackButton !== null) {
-        resultBackButton.addEventListener("click", leaveGame);
-    }
+    resultBackButton.addEventListener("click", leaveGame);
 }
 
 export function connectExitDialog(): void {
@@ -82,5 +77,5 @@ export function connectExitDialog(): void {
     if (confirmExitButton !== null) {
         confirmExitButton.addEventListener("click", leaveGame);
     }
-    connectBackToStartButtons();
+    connectResultBackButton();
 }

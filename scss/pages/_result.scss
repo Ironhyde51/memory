@@ -1,7 +1,9 @@
 @use '../abstract/main' as a;
 
 .result {
-    position: relative;
+    position: fixed;
+    inset: 0;
+    z-index: 10;
     display: grid;
     min-height: 100vh;
     padding: 32px;
@@ -78,5 +80,19 @@
     &__back-button {
         align-self: center;
         margin-top: 44px;
+    }
+}
+
+.result:not([hidden]) {
+    animation: result-slide-in 0.8s ease-in-out both;
+}
+
+@keyframes result-slide-in {
+    from {
+        transform: translateY(-100%);
+    }
+
+    to {
+        transform: translateY(0);
     }
 }

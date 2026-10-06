@@ -4,6 +4,7 @@ import { recordFoundPair } from "./gameProgress";
 let firstCard: HTMLButtonElement | null = null;
 let secondCard: HTMLButtonElement | null = null;
 let hidePairTimeout: number | null = null;
+let cardInputLocked = false;
 
 function showCardFront(card: HTMLButtonElement): void {
     card.classList.add("game__card--flipped");
@@ -52,6 +53,13 @@ function clearHidePairTimeout(): void {
 export function resetCardInteraction(): void {
     clearHidePairTimeout();
     resetSelectedCards();
+    cardInputLocked = false;
+}
+
+function recordPairProgress(): void {
+    if (recordFoundPair()) {
+        cardInputLocked = true;
+    }
 }
 
 function keepMatchingPair(): void {
@@ -64,7 +72,7 @@ function keepMatchingPair(): void {
     }
 
     rewardCurrentPlayer();
-    recordFoundPair();
+    recordPairProgress();
     resetSelectedCards();
 }
 
@@ -101,13 +109,21 @@ function selectSecondCard(card: HTMLButtonElement): void {
     checkSelectedPair();
 }
 
+function canSelectFirstCard(): boolean {
+    return !cardInputLocked && firstCard === null;
+}
+
+function cannotSelectSecondCard(card: HTMLButtonElement): boolean {
+    return cardInputLocked || secondCard !== null || card === firstCard;
+}
+
 function handleCardClick(card: HTMLButtonElement): void {
-    if (firstCard === null) {
+    if (canSelectFirstCard()) {
         selectFirstCard(card);
         return;
     }
 
-    if (secondCard !== null || card === firstCard) {
+    if (cannotSelectSecondCard(card)) {
         return;
     }
 

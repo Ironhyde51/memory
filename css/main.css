@@ -301,6 +301,11 @@ button {
   padding-left: 28px;
   font-size: 14px;
   cursor: pointer;
+  transform-origin: left center;
+  transition: transform 0.2s ease;
+}
+.settings__option:hover {
+  transform: scale(1.06);
 }
 .settings__option > span {
   display: flex;
@@ -686,13 +691,11 @@ button {
   background-color: currentColor;
   clip-path: polygon(0 0, 75% 0, 100% 50%, 75% 100%, 0 100%);
 }
-.game-over__back-button {
-  align-self: center;
-  margin-top: 36px;
-}
 
 .result {
-  position: relative;
+  position: fixed;
+  inset: 0;
+  z-index: 10;
   display: grid;
   min-height: 100vh;
   padding: 32px;
@@ -759,6 +762,18 @@ button {
   margin-top: 44px;
 }
 
+.result:not([hidden]) {
+  animation: result-slide-in 0.8s ease-in-out both;
+}
+
+@keyframes result-slide-in {
+  from {
+    transform: translateY(-100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
 @media screen and (min-width: 0px) and (max-width: 768px) {
   .settings {
     padding: 48px 24px;
@@ -894,9 +909,6 @@ button {
   .game-over__score {
     gap: 14px;
     padding: 12px 14px;
-  }
-  .game-over__back-button {
-    margin-top: 28px;
   }
   .result__content {
     padding-top: 24px;
@@ -1689,9 +1701,6 @@ button {
   font-size: 18px;
   text-shadow: 0 2px 5px rgba(0, 0, 0, 0.9);
 }
-.theme--fantasy .game-over__back-button {
-  margin-top: 6px;
-}
 .theme--fantasy .result__confetti {
   display: none;
 }
@@ -1920,11 +1929,6 @@ button {
   .theme--fantasy #final-blue-score,
   .theme--fantasy #final-orange-score {
     font-size: 16px;
-  }
-  .theme--fantasy .game-over__back-button {
-    min-width: 160px;
-    min-height: 48px;
-    margin-top: 8px;
   }
   .theme--fantasy .result__message {
     margin-bottom: 10px;
