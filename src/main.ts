@@ -49,9 +49,6 @@ const selectedBoardSize = document.getElementById(
 const startGameButton = document.getElementById(
     "start-game-button"
 );
-const gameSettingsForm = document.getElementById(
-    "game-settings-form"
-);
 
 let selectedThemeImage = codingThemeImage;
 let selectedCardBack = codingCardBack;
@@ -64,6 +61,42 @@ let chosenBoardSize = 0;
 let chosenPlayer: Player | null = null;
 
 type SelectionGroup = "theme" | "player" | "board-size";
+
+/**
+ * Stores the selected radio button.
+ * @param input - Selected radio button.
+ * @param group - Settings group of the radio button.
+ */
+function saveSelection(
+    input: HTMLElement,
+    group: SelectionGroup
+): void {
+    const key = "memory-selection-" + group;
+    localStorage.setItem(key, input.id);
+}
+
+/**
+ * Restores one saved radio-button selection.
+ * @param group - Settings group that should be restored.
+ */
+function restoreSelection(group: SelectionGroup): void {
+    const key = "memory-selection-" + group;
+    const savedId = localStorage.getItem(key);
+    if (savedId === null) {
+        return;
+    }
+    const radioButton = document.getElementById(savedId);
+    if (radioButton instanceof HTMLInputElement) {
+        radioButton.click();
+    }
+}
+
+/** Restores all saved settings. */
+function restoreSettings(): void {
+    restoreSelection("theme");
+    restoreSelection("player");
+    restoreSelection("board-size");
+}
 
 /** Replaces the home page with the settings page. */
 function showSettings(): void {
@@ -343,42 +376,6 @@ function updateStartButton(): void {
     startGameButton.disabled = !allSelected;
 }
 
-/** Clears the completed state of every settings group. */
-function resetSelectionGroups(): void {
-    isThemeSelected = false;
-    isPlayerSelected = false;
-    isBoardSizeSelected = false;
-}
-
-/** Restores the internal defaults used before a new selection. */
-function resetSelectedValues(): void {
-    selectedThemeImage = codingThemeImage;
-    selectedCardBack = codingCardBack;
-    selectedCardFronts = codingCards;
-    preparedCardFronts = [];
-    chosenBoardSize = 0;
-    chosenPlayer = null;
-}
-
-/** Restores the placeholder text in the settings summary. */
-function resetSelectionSummary(): void {
-    updateSelection(selectedTheme, "Theme");
-    updateSelection(selectedPlayer, "Player");
-    updateSelection(selectedBoardSize, "Board size");
-}
-
-/** Clears every setting after the player leaves a game. */
-function resetSettings(): void {
-    if (gameSettingsForm instanceof HTMLFormElement) {
-        gameSettingsForm.reset();
-    }
-    resetSelectionGroups();
-    resetSelectedValues();
-    resetSelectionSummary();
-    updateThemePreview(codingThemeImage);
-    updateStartButton();
-}
-
 /**
  * Marks one settings group as selected.
  * @param group - Selection group that has been completed.
@@ -394,6 +391,24 @@ function selectGroup(group: SelectionGroup): void {
         isBoardSizeSelected = true;
     }
     updateStartButton();
+}
+
+/**
+ * Applies and stores one changed settings selection.
+ * @param input - Radio button that was selected.
+ * @param output - Element that displays the chosen value.
+ * @param text - Text shown for this choice.
+ * @param group - Selection group completed by this choice.
+ */
+function applySelection(
+    input: HTMLElement,
+    output: HTMLElement | null,
+    text: string,
+    group: SelectionGroup
+): void {
+    updateSelection(output, text);
+    selectGroup(group);
+    saveSelection(input, group);
 }
 
 /**
@@ -414,8 +429,7 @@ function connectSelection(
     }
     /** Updates the settings summary after the input changes. */
     input.addEventListener("change", function (): void {
-        updateSelection(output, text);
-        selectGroup(group);
+        applySelection(input, output, text, group);
     });
 }
 
@@ -481,7 +495,7 @@ connectSelection(bluePlayer, selectedPlayer, "Blue Player", "player");
 connectSelection(orangePlayer, selectedPlayer, "Orange Player", "player");
 connectStartingPlayer(bluePlayer, "blue");
 connectStartingPlayer(orangePlayer, "orange");
-connectExitDialog(resetSettings);
+connectExitDialog();
 
 connectSelection(boardSize16, selectedBoardSize, "Board-16 Cards", "board-size");
 connectSelection(boardSize24, selectedBoardSize, "Board-24 Cards", "board-size");
@@ -490,3 +504,5 @@ connectSelection(boardSize36, selectedBoardSize, "Board-36 Cards", "board-size")
 connectBoardSize(boardSize16, 16);
 connectBoardSize(boardSize24, 24);
 connectBoardSize(boardSize36, 36);
+
+restoreSettings();
